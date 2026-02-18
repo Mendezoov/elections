@@ -129,16 +129,17 @@ struct OnboardingView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 60)
-                        .background(
-                            LinearGradient(
-                                colors: [Color(hex: "2ECC71"), Color(hex: "27AE60")],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        )
-                        .shadow(color: .black.opacity(0.3), radius: 15, x: 0, y: 8)
                 }
+                .buttonStyle(.plain)
+                .background(
+                    LinearGradient(
+                        colors: [Color(hex: "2ECC71"), Color(hex: "27AE60")],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .shadow(color: .black.opacity(0.3), radius: 15, x: 0, y: 8)
                 .padding(.horizontal, 40)
                 .padding(.bottom, 50)
                 .opacity(showButton ? 1 : 0)

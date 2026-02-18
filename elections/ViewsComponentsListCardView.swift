@@ -44,14 +44,15 @@ struct ListCardView: View {
                         .foregroundColor(.white)
                 }
                 .padding(24)
-                .background(
-                    LinearGradient(
-                        colors: [Color(hex: list.colorStart), Color(hex: list.colorEnd)],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
             }
+            .buttonStyle(.plain)
+            .background(
+                LinearGradient(
+                    colors: [Color(hex: list.colorStart), Color(hex: list.colorEnd)],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
             .disabled(isDisabled)
             
             // Candidates list - Shows when selected

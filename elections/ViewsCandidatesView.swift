@@ -78,32 +78,33 @@ struct CandidatesView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 70)
-                        .background(
-                            Group {
-                                if viewModel.canSubmitVote {
-                                    LinearGradient(
-                                        colors: [Color(hex: "2ECC71"), Color(hex: "27AE60")],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                } else {
-                                    LinearGradient(
-                                        colors: [Color.gray, Color.gray.opacity(0.8)],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                }
-                            }
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        )
-                        .shadow(
-                            color: viewModel.canSubmitVote ? Color(hex: "2ECC71").opacity(0.5) : .clear,
-                            radius: 15,
-                            x: 0,
-                            y: 8
-                        )
-                        .scaleEffect(viewModel.canSubmitVote ? 1.0 : 0.98)
                     }
+                    .buttonStyle(.plain)
+                    .background(
+                        Group {
+                            if viewModel.canSubmitVote {
+                                LinearGradient(
+                                    colors: [Color(hex: "2ECC71"), Color(hex: "27AE60")],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            } else {
+                                LinearGradient(
+                                    colors: [Color.gray, Color.gray.opacity(0.8)],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            }
+                        }
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .shadow(
+                        color: viewModel.canSubmitVote ? Color(hex: "2ECC71").opacity(0.5) : .clear,
+                        radius: 15,
+                        x: 0,
+                        y: 8
+                    )
+                    .scaleEffect(viewModel.canSubmitVote ? 1.0 : 0.98)
                     .disabled(!viewModel.canSubmitVote)
                     .padding(.horizontal, 30)
                     .padding(.top, 10)
@@ -148,16 +149,17 @@ struct CandidatesView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 60)
-                        .background(
-                            LinearGradient(
-                                colors: [Color(hex: "3498DB"), Color(hex: "2980B9")],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        )
-                        .shadow(color: Color(hex: "3498DB").opacity(0.4), radius: 10, x: 0, y: 5)
                     }
+                    .buttonStyle(.plain)
+                    .background(
+                        LinearGradient(
+                            colors: [Color(hex: "3498DB"), Color(hex: "2980B9")],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .shadow(color: Color(hex: "3498DB").opacity(0.4), radius: 10, x: 0, y: 5)
                     .padding(.top, 10)
                 }
                 .padding(40)

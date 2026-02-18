@@ -88,16 +88,17 @@ struct LoginView: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 60)
-                            .background(
-                                LinearGradient(
-                                    colors: [Color(hex: "3498DB"), Color(hex: "2980B9")],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                            )
-                            .shadow(color: Color(hex: "3498DB").opacity(0.4), radius: 10, x: 0, y: 5)
                         }
+                        .buttonStyle(.plain)
+                        .background(
+                            LinearGradient(
+                                colors: [Color(hex: "3498DB"), Color(hex: "2980B9")],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .shadow(color: Color(hex: "3498DB").opacity(0.4), radius: 10, x: 0, y: 5)
                         .disabled(viewModel.voterID.isEmpty)
                         .opacity(viewModel.voterID.isEmpty ? 0.6 : 1.0)
                     }
