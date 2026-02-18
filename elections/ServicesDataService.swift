@@ -42,9 +42,9 @@ class DataService {
         if existingLists?.isEmpty ?? true {
             // Create three election lists with gradient colors
             let lists = [
-                ElectionList(name: "قائمة بطيخ", colorStart: "4A90E2", colorEnd: "7B68EE"),
-                ElectionList(name: "قائمة بص حضرتك", colorStart: "2ECC71", colorEnd: "1ABC9C"),
-                ElectionList(name: "قائمة غرامك راح", colorStart: "E74C3C", colorEnd: "F39C12")
+                ElectionList(name: "قائمة كفر الديك الالولى", colorStart: "4A90E2", colorEnd: "7B68EE"),
+                ElectionList(name: "قائمة كفر الديك الثانية", colorStart: "2ECC71", colorEnd: "1ABC9C"),
+                ElectionList(name: "قائمة كفر الديك الثالثة", colorStart: "E74C3C", colorEnd: "F39C12")
             ]
             
             for list in lists {
@@ -57,34 +57,34 @@ class DataService {
         let existingCandidates = try? modelContext.fetch(candidateDescriptor)
         
         if existingCandidates?.isEmpty ?? true {
-            // List 1: قائمة بطيخ
+            // List 1: قائمة كفر الديك الالولى
             let list1Candidates = [
-                Candidate(name: "عاكف الجبر", listName: "قائمة بطيخ", position: 1),
-                Candidate(name: "يأجوج ومأجوج", listName: "قائمة بطيخ", position: 2),
-                Candidate(name: "المهدي المنتظر", listName: "قائمة بطيخ", position: 3),
-                Candidate(name: "شخص من علي زهاف", listName: "قائمة بطيخ", position: 4),
-                Candidate(name: "مرشح خامس", listName: "قائمة بطيخ", position: 5),
-                Candidate(name: "مرشح سادس", listName: "قائمة بطيخ", position: 6)
+                Candidate(name: "احمد", listName: "قائمة كفر الديك الالولى", position: 1),
+                Candidate(name: "يأجوج ومأجوج", listName: "قائمة كفر الديك الالولى", position: 2),
+                Candidate(name: "المهدي المنتظر", listName: "قائمة كفر الديك الالولى", position: 3),
+                Candidate(name: "مرشح رابع للقائمة الالولى", listName: "قائمة كفر الديك الالولى", position: 4),
+                Candidate(name: "مرشح خامس للقائمة الالولى", listName: "قائمة كفر الديك الالولى", position: 5),
+                Candidate(name: "مرشح سادس للقائمة الالولى", listName: "قائمة كفر الديك الالولى", position: 6)
             ]
             
-            // List 2: قائمة بص حضرتك
+            // List 2: قائمة كفر الديك الثانية
             let list2Candidates = [
-                Candidate(name: "ربحي الجبر", listName: "قائمة بص حضرتك", position: 1),
-                Candidate(name: "مرشح ثاني", listName: "قائمة بص حضرتك", position: 2),
-                Candidate(name: "مرشح ثالث", listName: "قائمة بص حضرتك", position: 3),
-                Candidate(name: "مرشح رابع", listName: "قائمة بص حضرتك", position: 4),
-                Candidate(name: "مرشح خامس", listName: "قائمة بص حضرتك", position: 5),
-                Candidate(name: "مرشح سادس", listName: "قائمة بص حضرتك", position: 6)
+                Candidate(name: "ريتا", listName: "قائمة كفر الديك الثانية", position: 1),
+                Candidate(name: "مرشح ثاني للقائمة الثانية", listName: "قائمة كفر الديك الثانية", position: 2),
+                Candidate(name: "مرشح ثالث للقائمة الثانية", listName: "قائمة كفر الديك الثانية", position: 3),
+                Candidate(name: "مرشح رابع للقائمة الثانية", listName: "قائمة كفر الديك الثانية", position: 4),
+                Candidate(name: "مرشح خامس للقائمة الثانية", listName: "قائمة كفر الديك الثانية", position: 5),
+                Candidate(name: "مرشح سادس للقائمة الثانية", listName: "قائمة كفر الديك الثانية", position: 6)
             ]
             
-            // List 3: قائمة غرامك راح
+            // List 3: قائمة كفر الديك الثالثة
             let list3Candidates = [
-                Candidate(name: "ططلي", listName: "قائمة غرامك راح", position: 1),
-                Candidate(name: "مرشح ثاني", listName: "قائمة غرامك راح", position: 2),
-                Candidate(name: "مرشح ثالث", listName: "قائمة غرامك راح", position: 3),
-                Candidate(name: "مرشح رابع", listName: "قائمة غرامك راح", position: 4),
-                Candidate(name: "مرشح خامس", listName: "قائمة غرامك راح", position: 5),
-                Candidate(name: "مرشح سادس", listName: "قائمة غرامك راح", position: 6)
+                Candidate(name: "ططلي", listName: "قائمة كفر الديك الثالثة", position: 1),
+                Candidate(name: "مرشح ثاني للقائمة الثالثة", listName: "قائمة كفر الديك الثالثة", position: 2),
+                Candidate(name: "مرشح ثالث للقائمة الثالثة", listName: "قائمة كفر الديك الثالثة", position: 3),
+                Candidate(name: "مرشح رابع للقائمة الثالثة", listName: "قائمة كفر الديك الثالثة", position: 4),
+                Candidate(name: "مرشح خامس للقائمة الثالثة", listName: "قائمة كفر الديك الثالثة", position: 5),
+                Candidate(name: "مرشح سادس للقائمة الثالثة", listName: "قائمة كفر الديك الثالثة", position: 6)
             ]
             
             let allCandidates = list1Candidates + list2Candidates + list3Candidates

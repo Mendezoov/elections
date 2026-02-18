@@ -31,7 +31,20 @@ class VotingViewModel {
     func loadData(modelContext: ModelContext) {
         do {
             let listDescriptor = FetchDescriptor<ElectionList>()
-            lists = try modelContext.fetch(listDescriptor)
+            let fetchedLists = try modelContext.fetch(listDescriptor)
+            
+            // Sort lists to ensure correct order: الاولى, الثانية, الثالثة
+            lists = fetchedLists.sorted { list1, list2 in
+                if list1.name.contains("الاولى") || list1.name.contains("الالولى") {
+                    return true
+                } else if list2.name.contains("الاولى") || list2.name.contains("الالولى") {
+                    return false
+                } else if list1.name.contains("الثانية") {
+                    return list2.name.contains("الثالثة")
+                } else {
+                    return false
+                }
+            }
             
             let candidateDescriptor = FetchDescriptor<Candidate>()
             candidates = try modelContext.fetch(candidateDescriptor)

@@ -12,7 +12,11 @@ struct OnboardingView: View {
     @State private var logoScale: CGFloat = 0.5
     @State private var logoOpacity: Double = 0
     @State private var textOpacity: Double = 0
+    @State private var typedText = ""
+    @State private var showButton = false
     @Binding var hasSeenOnboarding: Bool
+    
+    private let fullText = "لجنة الانتخابات المحلية بلدية كفر الديك ٢٠٢٦"
     
     var body: some View {
         ZStack {
@@ -36,22 +40,89 @@ struct OnboardingView: View {
                     .opacity(logoOpacity)
                 
                 // Welcome text
-                VStack(spacing: 16) {
+                VStack(spacing: 20) {
                     Text("مرحباً بكم في")
-                        .font(.title2)
-                        .fontWeight(.medium)
-                        .foregroundColor(.white)
+                        .font(.system(size: 22, weight: .medium, design: .rounded))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [.white, .white.opacity(0.9)],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                     
-                    Text("لجنة الانتخابات المحلية ٢٠٢٦")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
+                    // Typing animation text
+                    ZStack {
+                        // Background glow effect
+                        Text(typedText)
+                            .font(.system(size: 26, weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                            .blur(radius: 10)
+                            .opacity(0.5)
+                        
+                        // Main text with gradient
+                        Text(typedText)
+                            .font(.system(size: 26, weight: .bold, design: .rounded))
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [
+                                        Color(hex: "FFD700"),
+                                        Color(hex: "FFA500"),
+                                        Color(hex: "FFD700")
+                                    ],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .shadow(color: .black.opacity(0.5), radius: 4, x: 0, y: 3)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 20)
+                            .frame(minHeight: 100)
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(3)
+                    }
+                    
+                    // Cursor effect
+                    if typedText.count < fullText.count {
+                        Text("|")
+                            .font(.system(size: 26, weight: .bold))
+                            .foregroundColor(Color(hex: "FFD700"))
+                            .opacity(textOpacity)
+                    }
                 }
                 .opacity(textOpacity)
+                .padding(.horizontal, 20)
                 
                 Spacer()
+                
+                // Powered by text
+                HStack(spacing: 4) {
+                    Text("Powered ")
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .italic()
+                       // .rotationEffect(.degrees(-10))
+                        .scaleEffect(x: 1.1, y: 1.0)
+                        .foregroundColor(.white)
+                        .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 1)
+                    
+                    Text("by Mendez developer")
+                        .font(.system(size: 18, weight: .bold, design: .rounded))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [
+                                    Color(hex: "00D4FF"),
+                                    Color(hex: "00A8E8"),
+                                    Color(hex: "007AFF")
+                                ],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 1)
+                }
+                .opacity(showButton ? 1 : 0)
+                .animation(.easeIn(duration: 0.6).delay(0.2), value: showButton)
                 
                 // Continue button
                 Button(action: {
@@ -60,8 +131,7 @@ struct OnboardingView: View {
                     }
                 }) {
                     Text("متابعة")
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                        .font(.system(size: 24, weight: .semibold, design: .rounded))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 60)
@@ -73,21 +143,54 @@ struct OnboardingView: View {
                             )
                         )
                         .cornerRadius(16)
-                        .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
+                        .shadow(color: .black.opacity(0.3), radius: 15, x: 0, y: 8)
                 }
                 .padding(.horizontal, 40)
                 .padding(.bottom, 50)
-                .opacity(textOpacity)
+                .opacity(showButton ? 1 : 0)
+                .scaleEffect(showButton ? 1 : 0.8)
             }
         }
         .onAppear {
+            // Animate logo
             withAnimation(.spring(response: 0.8, dampingFraction: 0.6).delay(0.2)) {
                 logoScale = 1.0
                 logoOpacity = 1.0
             }
             
-            withAnimation(.easeIn(duration: 0.8).delay(0.8)) {
+            // Fade in welcome text
+            withAnimation(.easeIn(duration: 0.6).delay(0.8)) {
                 textOpacity = 1.0
+            }
+            
+            // Start typing animation after welcome text appears
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+                startTypingAnimation()
+            }
+            
+            // Show button after typing completes
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.4 + Double(fullText.count) * 0.05 + 0.5) {
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
+                    showButton = true
+                }
+            }
+        }
+    }
+    
+    private func startTypingAnimation() {
+        typedText = ""
+        
+        for (index, character) in fullText.enumerated() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
+                typedText.append(character)
+                
+                // Add a subtle haptic feedback for each character (optional)
+                #if os(iOS)
+                let impactLight = UIImpactFeedbackGenerator(style: .light)
+                if index % 3 == 0 { // Only every 3rd character to not overwhelm
+                    impactLight.impactOccurred(intensity: 0.3)
+                }
+                #endif
             }
         }
     }
