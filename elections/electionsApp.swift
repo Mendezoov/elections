@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct electionsApp: App {
@@ -13,5 +14,6 @@ struct electionsApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [Voter.self, ElectionList.self, Candidate.self, Vote.self])
     }
 }
