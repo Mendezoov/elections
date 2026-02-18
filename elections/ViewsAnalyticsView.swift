@@ -213,7 +213,7 @@ struct AnalyticsView: View {
                         if !viewModel.lists.isEmpty {
                             Chart(viewModel.lists, id: \.id) { list in
                                 BarMark(
-                                    x: .value("القائمة", list.name),
+                                    x: .value("القائمة", shortenedListName(list.name)),
                                     y: .value("الأصوات", list.voteCount)
                                 )
                                 .foregroundStyle(
@@ -225,7 +225,21 @@ struct AnalyticsView: View {
                                 )
                                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                             }
-                            .frame(height: 250)
+                            .chartXAxis {
+                                AxisMarks { value in
+                                    AxisValueLabel {
+                                        if let name = value.as(String.self) {
+                                            Text(name)
+                                                .font(.system(size: 11, weight: .medium))
+                                                .foregroundColor(Color(hex: "34495E"))
+                                                .multilineTextAlignment(.center)
+                                                .lineLimit(2)
+                                                .fixedSize(horizontal: false, vertical: true)
+                                        }
+                                    }
+                                }
+                            }
+                            .frame(height: 280)
                             .padding(.horizontal)
                         } else {
                             Text("لا توجد بيانات")
@@ -357,6 +371,24 @@ struct AnalyticsView: View {
                     }
                 }
             }
+        }
+    }
+    
+    private func shortenedListName(_ name: String) -> String {
+        // Extract the key part of the list name for better chart display
+        if name.contains("الاولى") || name.contains("الالولى") {
+            return "القائمة الأولى"
+        } else if name.contains("الثانية") {
+            return "القائمة الثانية"
+        } else if name.contains("الثالثة") {
+            return "القائمة الثالثة"
+        } else {
+            // Fallback: take last 2-3 words
+            let words = name.components(separatedBy: " ")
+            if words.count > 2 {
+                return words.suffix(2).joined(separator: " ")
+            }
+            return name
         }
     }
     

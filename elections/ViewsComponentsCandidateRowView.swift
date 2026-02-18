@@ -50,8 +50,10 @@ struct CandidateRowView: View {
             }
             .padding(.vertical, 16)
             .padding(.horizontal, 20)
-            .background(isSelected ? Color(hex: "2ECC71").opacity(0.1) : Color.white)
         }
+        .buttonStyle(.plain)
+        .background(isSelected ? Color(hex: "2ECC71").opacity(0.1) : Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .disabled(!canSelect && !isSelected)
         .opacity(canSelect || isSelected ? 1.0 : 0.5)
     }
