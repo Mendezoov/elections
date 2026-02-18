@@ -30,8 +30,11 @@ struct ListCardView: View {
                     
                     // List name
                     Text(list.name)
-                        .font(.system(size: 28, weight: .bold))
+                        .font(.system(size: 22, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .minimumScaleFactor(0.6)
+                        .lineLimit(2)
                     
                     Spacer()
                     
