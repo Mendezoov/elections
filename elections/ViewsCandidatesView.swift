@@ -94,8 +94,8 @@ struct CandidatesView: View {
                                     )
                                 }
                             }
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                         )
-                        .cornerRadius(20)
                         .shadow(
                             color: viewModel.canSubmitVote ? Color(hex: "2ECC71").opacity(0.5) : .clear,
                             radius: 15,
@@ -154,15 +154,15 @@ struct CandidatesView: View {
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                         )
-                        .cornerRadius(16)
                         .shadow(color: Color(hex: "3498DB").opacity(0.4), radius: 10, x: 0, y: 5)
                     }
                     .padding(.top, 10)
                 }
                 .padding(40)
                 .background(
-                    RoundedRectangle(cornerRadius: 30)
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
                         .fill(Color.white)
                         .shadow(color: .black.opacity(0.3), radius: 30, x: 0, y: 15)
                 )

@@ -88,7 +88,7 @@ struct ListCardView: View {
                 .transition(.move(edge: .top).combined(with: .opacity))
             }
         }
-        .cornerRadius(20)
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .shadow(
             color: isSelected ? Color(hex: list.colorStart).opacity(0.4) : .black.opacity(0.1),
             radius: isSelected ? 20 : 10,
@@ -100,7 +100,7 @@ struct ListCardView: View {
         .overlay(
             Group {
                 if isDisabled {
-                    RoundedRectangle(cornerRadius: 20)
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .fill(Color.black.opacity(0.05))
                 }
             }

@@ -18,7 +18,7 @@ struct CandidateRowView: View {
             HStack(spacing: 16) {
                 // Selection checkbox
                 ZStack {
-                    RoundedRectangle(cornerRadius: 8)
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
                         .stroke(isSelected ? Color(hex: "2ECC71") : Color(hex: "BDC3C7"), lineWidth: 2)
                         .frame(width: 28, height: 28)
                     

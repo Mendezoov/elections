@@ -58,9 +58,9 @@ struct LoginView: View {
                                 .padding()
                                 .frame(height: 60)
                                 .background(Color.white)
-                                .cornerRadius(16)
+                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .stroke(
                                             LinearGradient(
                                                 colors: [Color(hex: "3498DB"), Color(hex: "9B59B6")],
@@ -94,8 +94,8 @@ struct LoginView: View {
                                     startPoint: .leading,
                                     endPoint: .trailing
                                 )
+                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                             )
-                            .cornerRadius(16)
                             .shadow(color: Color(hex: "3498DB").opacity(0.4), radius: 10, x: 0, y: 5)
                         }
                         .disabled(viewModel.voterID.isEmpty)
@@ -103,7 +103,7 @@ struct LoginView: View {
                     }
                     .padding(30)
                     .background(
-                        RoundedRectangle(cornerRadius: 24)
+                        RoundedRectangle(cornerRadius: 24, style: .continuous)
                             .fill(Color.white.opacity(0.9))
                             .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: 10)
                     )

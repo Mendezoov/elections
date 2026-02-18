@@ -80,8 +80,8 @@ struct AnalyticsView: View {
                             startPoint: .leading,
                             endPoint: .trailing
                         )
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     )
-                    .cornerRadius(16)
                     .shadow(color: Color(hex: "3498DB").opacity(0.5), radius: 15, x: 0, y: 8)
                 }
                 .padding(.top, 20)
@@ -111,9 +111,9 @@ struct AnalyticsView: View {
                                 .padding()
                                 .frame(height: 50)
                                 .background(Color.white)
-                                .cornerRadius(12)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 12)
+                                    RoundedRectangle(cornerRadius: 12, style: .continuous)
                                         .stroke(Color(hex: "BDC3C7"), lineWidth: 1)
                                 )
                         }
@@ -128,9 +128,9 @@ struct AnalyticsView: View {
                                 .padding()
                                 .frame(height: 50)
                                 .background(Color.white)
-                                .cornerRadius(12)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 12)
+                                    RoundedRectangle(cornerRadius: 12, style: .continuous)
                                         .stroke(Color(hex: "BDC3C7"), lineWidth: 1)
                                 )
                         }
@@ -153,8 +153,8 @@ struct AnalyticsView: View {
                                         startPoint: .leading,
                                         endPoint: .trailing
                                     )
+                                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                                 )
-                                .cornerRadius(12)
                         }
                         .padding(.top, 10)
                     }
@@ -221,7 +221,7 @@ struct AnalyticsView: View {
                                         endPoint: .top
                                     )
                                 )
-                                .cornerRadius(8)
+                                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                             }
                             .frame(height: 250)
                             .padding(.horizontal)
@@ -234,7 +234,7 @@ struct AnalyticsView: View {
                     }
                     .padding(.vertical)
                     .background(Color.white)
-                    .cornerRadius(16)
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
                     .padding(.horizontal)
                     
@@ -283,7 +283,7 @@ struct AnalyticsView: View {
                             }
                             .padding()
                             .background(Color.white)
-                            .cornerRadius(12)
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                             .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
                             .padding(.horizontal)
                         }
@@ -312,8 +312,8 @@ struct AnalyticsView: View {
                                     startPoint: .leading,
                                     endPoint: .trailing
                                 )
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                             )
-                            .cornerRadius(12)
                             
                             ForEach(viewModel.candidatesForList(list.name), id: \.id) { candidate in
                                 HStack {
@@ -333,7 +333,7 @@ struct AnalyticsView: View {
                         }
                         .padding()
                         .background(Color.white)
-                        .cornerRadius(16)
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
                         .padding(.horizontal)
                     }
@@ -391,7 +391,7 @@ struct SummaryCard: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 24)
         .background(Color.white)
-        .cornerRadius(16)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
 }

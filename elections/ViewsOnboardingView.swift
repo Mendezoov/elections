@@ -98,29 +98,23 @@ struct OnboardingView: View {
                 
                 // Powered by text
                 HStack(spacing: 4) {
-                    Text("Powered ")
+                    Text("powered")
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                         .italic()
-                       // .rotationEffect(.degrees(-10))
-                        .scaleEffect(x: 1.1, y: 1.0)
-                        .foregroundColor(.white)
-                        .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 1)
-                    
                     Text("by Mendez developer")
-                        .font(.system(size: 18, weight: .bold, design: .rounded))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [
-                                    Color(hex: "00D4FF"),
-                                    Color(hex: "00A8E8"),
-                                    Color(hex: "007AFF")
-                                ],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 1)
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
                 }
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [
+                            Color(hex: "FFD700").opacity(0.9),
+                            Color(hex: "FFA500").opacity(0.8)
+                        ],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
                 .opacity(showButton ? 1 : 0)
                 .animation(.easeIn(duration: 0.6).delay(0.2), value: showButton)
                 
@@ -141,8 +135,8 @@ struct OnboardingView: View {
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                         )
-                        .cornerRadius(16)
                         .shadow(color: .black.opacity(0.3), radius: 15, x: 0, y: 8)
                 }
                 .padding(.horizontal, 40)
