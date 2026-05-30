@@ -16,6 +16,7 @@ struct OnboardingView: View {
     @State private var showButton = false
     @Binding var hasSeenOnboarding: Bool
     
+    // MARK: - CUSTOMIZE: The headline shown with the typing animation on the intro screen.
     private let fullText = "لجنة الانتخابات المحلية بلدية كفر الديك ٢٠٢٦"
     
     var body: some View {

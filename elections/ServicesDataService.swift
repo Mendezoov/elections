@@ -20,7 +20,8 @@ class DataService {
         let existingVoters = try? modelContext.fetch(voterDescriptor)
         
         if existingVoters?.isEmpty ?? true {
-            // Create 5 random voter IDs (9 digits each)
+            // MARK: - CUSTOMIZE: Replace with your registered voters' 9-digit ID numbers.
+            // Each entry must be exactly 9 digits. Add or remove lines as needed.
             let voterIDs = [
                 "123456789",
                 "987654321",
@@ -44,7 +45,8 @@ class DataService {
         let existingLists = try? modelContext.fetch(listDescriptor)
         
         if existingLists?.isEmpty ?? true {
-            // Create three election lists with gradient colors
+            // MARK: - CUSTOMIZE: Set your election list names and gradient colors (hex strings).
+            // colorStart is the left/bottom color, colorEnd is the right/top color of the gradient.
             let lists = [
                 ElectionList(name: "قائمة كفر الديك الالولى", colorStart: "4A90E2", colorEnd: "7B68EE"),
                 ElectionList(name: "قائمة كفر الديك الثانية", colorStart: "2ECC71", colorEnd: "1ABC9C"),
@@ -61,6 +63,7 @@ class DataService {
         let existingCandidates = try? modelContext.fetch(candidateDescriptor)
         
         if existingCandidates?.isEmpty ?? true {
+            // MARK: - CUSTOMIZE: Replace candidate names, listName (must match the list name above), and position.
             // List 1: قائمة كفر الديك الالولى
             let list1Candidates = [
                 Candidate(name: "احمد", listName: "قائمة كفر الديك الالولى", position: 1),

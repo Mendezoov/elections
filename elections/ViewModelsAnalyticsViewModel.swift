@@ -20,6 +20,7 @@ class AnalyticsViewModel {
     var password: String = ""
     var showAuthError: Bool = false
     
+    // MARK: - CUSTOMIZE: Change these before distributing the app.
     private let adminUsername = "Mendez"
     private let adminPassword = "12345"
     
